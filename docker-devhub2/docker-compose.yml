@@ -1,0 +1,18 @@
+version: '2'
+services:
+
+  devhub:
+    image: devhub:latest
+    restart: always
+    environment:
+      - DEVHUB_USER= # user name for basic authentification
+      - DEVHUB_PASSWORD= # password for basic authentification
+      - DEVHUB_TITLE= # title name (default is '')
+      - DEVHUB_DB= # db name (default is devhub_db)
+    volumes:
+      - ./data/db:/data/db
+      - ./data/uploads:/DevHub/static/uploads
+      - ./data/log:/data/log
+      - /etc/localtime:/etc/localtime:ro
+    ports: 
+      - 3000:3000
